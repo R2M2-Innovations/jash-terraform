@@ -1,0 +1,51 @@
+####################################################################################
+# TAG CONFIGURATION SETTINGS
+####################################################################################
+organization = "r2m2"
+application = "upload"
+environment = "d"
+stack_id = "1"
+deployment_type = "terraform"
+deployment_repo = "https://github.com/r2m2/terraform/api-gateway"
+compliance = "n/a"
+
+####################################################################################
+# API GATEWAY CONFIGURATION SETTINGS
+####################################################################################
+account = "618323728704"
+region = "us-east-1"
+deployment_version = "1.0"
+type = "REGIONAL"
+
+stages = [
+  "dev"
+]
+
+custom_domains = "false"
+stage_variables = {
+  dev = {
+    description = "dev"
+    documentation_version = ""
+    cache_cluster_enabled = "false"
+    cache_cluster_size = "0.5"
+    client_certificate_id = ""
+    xray_tracing_enabled = "false"
+    variables = {
+      environment = "dev"
+    }
+    domain_config = {
+      zone_id = "Z00191831JO10RWB2ZBW4"
+      domain_name = "r2m2-example-d-1.r2m2.com"
+      certificate = "arn:aws:acm:us-east-1:618323728704:certificate/ebc21391-e33a-48e1-9fad-4efa107e792b"
+    }
+  } 
+}
+
+access_logs = "false"
+
+####################################################################################
+# CLOUDWATCH MONITORING SETTINGS
+####################################################################################
+monitoring = true
+alarm_notification_arns = "arn:aws:sns:us-east-1:618323728704:r2m2-alarms"
+ok_notification_arns = "arn:aws:sns:us-east-1:618323728704:r2m2-alarms"
